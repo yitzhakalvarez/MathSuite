@@ -17,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //test commit
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/test.fxml"));
         Scene scene = new Scene(parent);
 
