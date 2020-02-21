@@ -1,0 +1,9 @@
+# ignore Intellij preferences
+.idea
+*.iml
+
+# Ignore Gradle build output directory
+build
+
+# Project exclude paths
+/target/
