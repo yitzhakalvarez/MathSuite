@@ -34,6 +34,7 @@ public class LoginController {
      */
     @FXML
     private void initialize() {
-        rememberSwitch.setOnAction((toggle) -> System.out.println(rememberSwitch.isPressed()));
+
+        
     }
 }

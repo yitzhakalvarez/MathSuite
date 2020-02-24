@@ -1,0 +1,10 @@
+* {
+
+    border-color: #323233
+}
+
+.root {
+
+    -fx-background: border-color
+
+}

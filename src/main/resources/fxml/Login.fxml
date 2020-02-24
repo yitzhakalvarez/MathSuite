@@ -4,33 +4,42 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="317.0" prefWidth="348.0" style="-fx-background-color: #666666;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.LoginController">
+<AnchorPane fx:id="mainPane" prefHeight="339.0" prefWidth="386.0" stylesheets="@../css/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.LoginController">
    <children>
-      <Pane fx:id="loginPane" layoutX="39.0" layoutY="34.0" prefHeight="232.0" prefWidth="251.0">
+      <Pane fx:id="loginPane" layoutX="28.0" layoutY="30.0" prefHeight="280.0" prefWidth="330.0" stylesheets="@../css/Global.css">
          <children>
-            <JFXTextField fx:id="usernameField" focusColor="#3eb2c9" layoutX="52.0" layoutY="29.0" prefHeight="25.0" prefWidth="164.0" promptText="Username" unFocusColor="#757474">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXPasswordField fx:id="passwordField" focusColor="#3eb2c9" layoutX="52.0" layoutY="89.0" prefHeight="25.0" prefWidth="164.0" promptText="Password" unFocusColor="#757474">
+            <JFXPasswordField fx:id="passwordField" focusColor="#4b87bf" layoutX="83.0" layoutY="97.0" prefHeight="25.0" prefWidth="164.0" promptText="Password" unFocusColor="#757474">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXPasswordField>
-            <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="52.0" layoutY="159.0" prefHeight="25.0" prefWidth="164.0" style="-fx-background-color: #3eb2c9;" text="LOGIN">
+            <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="27.0" layoutY="176.0" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #4b87bf;" text="LOGIN">
                <font>
                   <Font size="14.0" />
                </font></JFXButton>
+            <JFXToggleButton fx:id="rememberSwitch" layoutX="185.0" layoutY="171.0" size="6.0" text="Remember me" textAlignment="CENTER" textFill="#727272" toggleColor="#4b87bf" toggleLineColor="#61aef1" unToggleLineColor="#9e9e9e">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXToggleButton>
+            <JFXTextField fx:id="usernameField" focusColor="#4b87bf" layoutX="83.0" layoutY="38.0" prefHeight="25.0" prefWidth="164.0" promptText="Student ID" unFocusColor="#757474">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+
          </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect>
       </Pane>
-      <JFXToggleButton fx:id="rememberSwitch" layoutX="189.0" layoutY="263.0" size="6.0" text="Remember me" unToggleLineColor="#9e9e9e">
-         <font>
-            <Font size="14.0" />
-         </font></JFXToggleButton>
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

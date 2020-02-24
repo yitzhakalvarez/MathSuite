@@ -6,7 +6,7 @@ package org.db.structures;
  *
  * Typically an Admin user would be a teacher or a parent
  */
-public class Admin extends User {
+public final class Admin extends User {
 
     public Admin(String username, String password) {
         super(username, password);

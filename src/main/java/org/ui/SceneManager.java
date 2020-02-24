@@ -17,7 +17,7 @@ import java.util.HashMap;
  * The Scene Manager handles this by loading the FXML files once into a map,
  * then switching between them via the scene's setRoot() method.
  */
-public class SceneManager {
+public final class SceneManager {
 
     /*The map of different UI views*/
     private HashMap<String, Parent> views = new HashMap<>();
@@ -26,6 +26,7 @@ public class SceneManager {
 
     public SceneManager(Scene scene) {
         this.scene = scene;
+        construct();
     }
 
     /**
@@ -33,8 +34,8 @@ public class SceneManager {
      *
      * Called exactly once, upon initialization
      */
-    public void construct() {
-        /*Add the login view to our manager*/
+    private void construct() {
+        /*Add the login view to the manager*/
         loadFXMLView("Login");
     }
 
@@ -46,9 +47,11 @@ public class SceneManager {
      */
     private void loadFXMLView(String name) {
         try {
+            /* Load the file from the marked resources folder */
+
             views.put(name, FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml")));
         } catch (IOException e) {
-            System.out.println("Problem loading resource " + name + " \n Make sure it is located within the resources/fxml directory");
+            System.out.println("Problem loading resource " + name + " \n Make sure it is located within the /resources/fxml directory");
         }
     }
 
