@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.SplashController">
+   <children>
+      <Label fx:id="label" layoutX="279.0" layoutY="147.0" text="SPlash page" />
+      <JFXButton fx:id="button" layoutX="233.0" layoutY="230.0" text="Hi" />
+   </children>
+</AnchorPane>
