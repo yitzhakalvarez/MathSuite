@@ -1,4 +1,4 @@
-package org.db.structures;
+package org.context.structures;
 
 public final class Student extends User {
 

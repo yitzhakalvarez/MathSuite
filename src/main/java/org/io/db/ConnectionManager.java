@@ -1,4 +1,4 @@
-package org.db;
+package org.io.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,5 +16,4 @@ public final class ConnectionManager {
             e.printStackTrace();
         }
     }
-
 }

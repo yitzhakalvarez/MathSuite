@@ -48,7 +48,6 @@ public final class SceneManager {
     private void loadFXMLView(String name) {
         try {
             /* Load the file from the marked resources folder */
-
             views.put(name, FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml")));
         } catch (IOException e) {
             System.out.println("Problem loading resource " + name + " \n Make sure it is located within the /resources/fxml directory");

@@ -1,4 +1,4 @@
-package org.db.structures;
+package org.context.structures;
 
 /**
  * An extension to the 'User' class

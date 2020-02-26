@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="339.0" prefWidth="386.0" stylesheets="@../css/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.LoginController">
+<AnchorPane fx:id="mainPane" prefHeight="238.0" prefWidth="386.0" stylesheets="@../css/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.LoginController">
    <children>
-      <Pane fx:id="loginPane" layoutX="28.0" layoutY="30.0" prefHeight="280.0" prefWidth="330.0" stylesheets="@../css/Global.css">
+      <Pane fx:id="loginPane" layoutX="28.0" layoutY="14.0" prefHeight="175.0" prefWidth="330.0" stylesheets="@../css/Global.css">
          <children>
-            <JFXPasswordField fx:id="passwordField" focusColor="#4b87bf" layoutX="83.0" layoutY="97.0" prefHeight="25.0" prefWidth="164.0" promptText="Password" unFocusColor="#757474">
+            <JFXPasswordField fx:id="passwordField" focusColor="#4b87bf" layoutX="83.0" layoutY="88.0" prefHeight="25.0" prefWidth="164.0" promptText="Password" unFocusColor="#757474">
                <font>
                   <Font size="14.0" />
                </font>
@@ -22,12 +22,12 @@
                <font>
                   <Font size="14.0" />
                </font></JFXButton>
-            <JFXToggleButton fx:id="rememberSwitch" layoutX="185.0" layoutY="171.0" size="6.0" text="Remember me" textAlignment="CENTER" textFill="#727272" toggleColor="#4b87bf" toggleLineColor="#61aef1" unToggleLineColor="#9e9e9e">
+            <JFXToggleButton fx:id="rememberSwitch" layoutX="185.0" layoutY="171.0" size="6.0" text="Remember me" textAlignment="CENTER" textFill="#87939a" toggleColor="#4b87bf" toggleLineColor="#61aef1" unToggleLineColor="#9e9e9e">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXToggleButton>
-            <JFXTextField fx:id="usernameField" focusColor="#4b87bf" layoutX="83.0" layoutY="38.0" prefHeight="25.0" prefWidth="164.0" promptText="Student ID" unFocusColor="#757474">
+            <JFXTextField fx:id="usernameField" focusColor="#4b87bf" layoutX="83.0" layoutY="24.0" prefHeight="25.0" prefWidth="164.0" promptText="Student ID" unFocusColor="#757474">
                <font>
                   <Font size="14.0" />
                </font>
@@ -39,7 +39,4 @@
          </effect>
       </Pane>
    </children>
-   <effect>
-      <DropShadow />
-   </effect>
 </AnchorPane>

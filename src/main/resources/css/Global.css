@@ -1,10 +1,27 @@
 * {
-
     border-color: #323233
 }
 
 .root {
-
     -fx-background: border-color
+}
 
+.jfx-text-field, .jfx-password-field {
+    -fx-prompt-text-fill: #87939A;
+    -fx-text-inner-color: #87939A;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+.jfx-text-field {
+
+}
+
+.jfx-password-field {
+    -fx-background-image: url('/images/lock.png');
+    -fx-background-size: 30;
+}
+
+.jfx-button {
+    -fx-background-radius: 25;
 }

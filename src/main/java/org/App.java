@@ -16,6 +16,7 @@ public final class App extends Application {
 
     @Override
     public void start(Stage stage) {
+
         final Scene scene = new Scene(new StackPane());
         (manager = new SceneManager(scene)).showView("Login");
 
