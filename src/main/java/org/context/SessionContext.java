@@ -1,33 +1,73 @@
 package org.context;
 
 import org.context.structures.User;
+import org.ini4j.Ini;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Properties;
+import java.io.*;
+import java.net.URISyntaxException;
 
 public final class SessionContext {
 
-    public static User user = null;
+    private static SessionContext instance;
 
-    public static final Properties credentials = new Properties();
+    private User user;
 
-    static {
-        try (InputStream inputStream = SessionContext.class.getResourceAsStream("/data/credentials.txt")) {
-            InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-            BufferedReader reader = new BufferedReader(streamReader);
-            for (String line; (line = reader.readLine()) != null;) {
-                String[] cred = line.split("=");
-                credentials.put(cred[0], cred[1]);
+    /* preference settings that can be read in, and written out */
+    private Ini prefs;
+
+    private boolean remembering;
+
+    public SessionContext()  {
+        try {
+            prefs = new Ini(new File(SessionContext.class.getResource("/data/config.ini").toURI()));
+            remembering = Boolean.parseBoolean(prefs.get("login", "remember"));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void init() {
+        instance = new SessionContext();
+    }
+
+    public static SessionContext get() {
+        return instance;
+    }
+
+    /**
+     * Resets the session context
+     */
+    public void reset() {
+        user = null;
+        try {
+            prefs.put("login", "remember", isRemembering());
+            if (!isRemembering()) {
+                prefs.put("login", "user", "");
+                prefs.put("login", "pass", "");
             }
-            streamReader.close();
-            reader.close();
-
+            prefs.store();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void autoSetUser(String user) {
+        prefs.put("login", "user", user);
+    }
+
+    public void autoSetPass(String pass) {
+        prefs.put("login", "pass", pass);
+    }
+
+    public boolean isRemembering() {
+        return remembering;
+    }
+
+    public void setRemembering(boolean value) {
+        remembering = value;
+    }
+
+    public String getPreference(String section, String key) {
+        return prefs.get(section, key);
     }
 }

@@ -5,16 +5,10 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-
 import org.context.SessionContext;
 
-
 public class LoginController {
-
-    public LoginController() {
-    }
 
     @FXML
     private AnchorPane mainPane;
@@ -40,8 +34,24 @@ public class LoginController {
      */
     @FXML
     private void initialize() {
-        usernameField.setText((String) SessionContext.credentials.getOrDefault("user", ""));
-        passwordField.setText((String) SessionContext.credentials.getOrDefault("pass", ""));
+        rememberSwitch.setSelected(SessionContext.get().isRemembering());
+
+        if (SessionContext.get().isRemembering()) {
+            usernameField.setText(SessionContext.get().getPreference("login", "user"));
+            passwordField.setText(SessionContext.get().getPreference("login", "pass"));
+        }
+
+        rememberSwitch.setOnAction((action) -> {
+            SessionContext.get().setRemembering(rememberSwitch.selectedProperty().getValue());
+        });
+
+        usernameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            SessionContext.get().autoSetUser(newValue);
+        });
+
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            SessionContext.get().autoSetPass(newValue);
+        });
 
         loginButton.setOnAction((action) -> {
 

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.context.SessionContext;
 import org.ui.SceneManager;
 
 public final class App extends Application {
@@ -11,6 +12,7 @@ public final class App extends Application {
     private SceneManager manager;
 
     public static void main(String[] args) {
+        SessionContext.init();
         launch(args);
     }
 
@@ -22,6 +24,9 @@ public final class App extends Application {
 
         stage = new Stage();
         stage.setTitle("Math Suite");
+        stage.setOnCloseRequest((event) -> {
+            SessionContext.get().reset();
+        });
         stage.setScene(scene);
         stage.show();
     }
