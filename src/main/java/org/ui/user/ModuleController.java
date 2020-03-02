@@ -20,8 +20,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import org.context.SessionContext;
 import org.context.module.Module;
 import org.context.module.TestModule;
+import org.context.module.VisualizingFractions;
+import org.ui.SceneManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,8 +51,8 @@ public class ModuleController {
         /* the actual module's themselves */
         final ArrayList<Module> modules = new ArrayList<>();
 
-        for (int i = 0; i < 75; i++) {
-            modules.add(new TestModule());
+        for (int i = 0; i < 25; i++) {
+            modules.add(new VisualizingFractions());
         }
 
         /* The module represented as a JavaFX scene node */
@@ -93,7 +96,10 @@ public class ModuleController {
             play.translateYProperty().bind(Bindings.createDoubleBinding(() -> header.getBoundsInParent().getHeight()
                     - play.getHeight() / 2, header.boundsInParentProperty(), play.heightProperty()));
 
-            //play.setOnAction(action -> System.out.println(String.format("#%06x", nextInt)));
+            play.setOnAction(action -> {
+                SessionContext.getManager().showView(module.build());
+                module.init();
+            });
 
             StackPane.setMargin(play, new Insets(0, 12, 0, 0));
             StackPane.setAlignment(play, Pos.TOP_RIGHT);

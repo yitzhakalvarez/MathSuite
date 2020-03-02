@@ -1,9 +1,15 @@
 package org.context.module;
 
-public class Module {
+import javafx.scene.Parent;
+
+public abstract class Module {
 
     public Module() {
-        System.out.println(getClass().getSimpleName() + " game has started");
     }
 
+    public final void init() {
+        System.out.println(getClass().getSimpleName() + " module has started");
+    }
+
+    public abstract Parent build();
 }

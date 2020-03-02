@@ -16,6 +16,7 @@ public final class App extends Application {
 
     @Override
     public void start(Stage stage) {
+
         stage = new Stage();
         stage.setTitle("Math Suite");
         stage.setOnCloseRequest((event) -> {
@@ -28,7 +29,6 @@ public final class App extends Application {
         manager.showView("Login");
 
         stage.setScene(scene);
-
         stage.show();
     }
 }

@@ -70,4 +70,8 @@ public final class SceneManager {
     public void showView(String name) {
         scene.setRoot(views.get(name));
     }
+
+    public void showView(Parent parent) {
+        scene.setRoot(parent);
+    }
 }

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -22,15 +23,14 @@ import javafx.stage.Stage;
  * These charts can be accessed through student resources.
  */
 
-public class VisualizingFractions extends Application {
+public class VisualizingFractions extends Module {
 
     @Override
-    public void start(Stage stage) {
-        Scene scene;
+    public Parent build() {
+
         GridPane pane = new GridPane();
         PieChart chart = new PieChart();
         VBox vbox = new VBox();  // Will hold info on n size
-
 
         //  Creates buttons and adds them to grid
         Button half = new Button("Halves");
@@ -136,23 +136,11 @@ public class VisualizingFractions extends Application {
             }
         });
 
-
-        //  sets and finalizes all the pane and stage attributes
-        stage.setTitle("Factions Represented Through a Circle");
-        stage.setWidth(800);
-        stage.setHeight(800);
         pane.setAlignment(Pos.CENTER);
 
         pane.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
-        scene = new Scene(pane, 700, 700);
 
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
+        //parent = pane;
+        return pane;
     }
 }
