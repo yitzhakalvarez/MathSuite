@@ -12,6 +12,7 @@ public class SplashController {
     @FXML
     private Label label;
 
+    @FXML
     public void initialize() {
 
         button.setOnAction((action) -> {

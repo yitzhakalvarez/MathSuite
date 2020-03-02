@@ -3,6 +3,7 @@ package org.ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,8 +25,11 @@ public final class SceneManager {
     /*the current Scene shown by the Application's Stage*/
     private Scene scene;
 
-    public SceneManager(Scene scene) {
+    private Stage stage;
+
+    public SceneManager(Scene scene, Stage stage) {
         this.scene = scene;
+        this.stage = stage;
         construct();
     }
 
@@ -35,8 +39,10 @@ public final class SceneManager {
      * Called exactly once, upon initialization
      */
     private void construct() {
-        /*Add the login view to the manager*/
+        /* Add the Login view to the manager */
         loadFXMLView("Login");
+        /* Add the Module loader view to the manager */
+        loadFXMLView("Module");
     }
 
     /**

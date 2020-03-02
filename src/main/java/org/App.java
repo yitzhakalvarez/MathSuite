@@ -9,8 +9,6 @@ import org.ui.SceneManager;
 
 public final class App extends Application {
 
-    private SceneManager manager;
-
     public static void main(String[] args) {
         SessionContext.init();
         launch(args);
@@ -18,16 +16,19 @@ public final class App extends Application {
 
     @Override
     public void start(Stage stage) {
-
-        final Scene scene = new Scene(new StackPane());
-        (manager = new SceneManager(scene)).showView("Login");
-
         stage = new Stage();
         stage.setTitle("Math Suite");
         stage.setOnCloseRequest((event) -> {
             SessionContext.get().reset();
         });
+
+        final Scene scene = new Scene(new StackPane());
+        final SceneManager manager = new SceneManager(scene, stage);
+        SessionContext.setManager(manager);
+        manager.showView("Login");
+
         stage.setScene(scene);
+
         stage.show();
     }
 }

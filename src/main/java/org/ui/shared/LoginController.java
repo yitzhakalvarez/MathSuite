@@ -11,7 +11,7 @@ import org.context.SessionContext;
 public class LoginController {
 
     @FXML
-    private AnchorPane mainPane;
+    private StackPane mainPane;
 
     @FXML
     private Pane loginPane;
@@ -34,27 +34,28 @@ public class LoginController {
      */
     @FXML
     private void initialize() {
-        rememberSwitch.setSelected(SessionContext.get().isRemembering());
+        rememberSwitch.setSelected(SessionContext.isRemembering());
 
-        if (SessionContext.get().isRemembering()) {
-            usernameField.setText(SessionContext.get().getPreference("login", "user"));
-            passwordField.setText(SessionContext.get().getPreference("login", "pass"));
+        if (SessionContext.isRemembering()) {
+            usernameField.setText(SessionContext.getPreference("login", "user"));
+            passwordField.setText(SessionContext.getPreference("login", "pass"));
         }
 
         rememberSwitch.setOnAction((action) -> {
-            SessionContext.get().setRemembering(rememberSwitch.selectedProperty().getValue());
+            SessionContext.setRemembering(rememberSwitch.selectedProperty().getValue());
         });
 
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            SessionContext.get().autoSetUser(newValue);
+            SessionContext.autoSetUser(newValue);
         });
 
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
-            SessionContext.get().autoSetPass(newValue);
+            SessionContext.autoSetPass(newValue);
         });
 
         loginButton.setOnAction((action) -> {
-
+            //just for now
+            SessionContext.getManager().showView("Module");
         });
     }
 }

@@ -2,11 +2,14 @@ package org.context;
 
 import org.context.structures.User;
 import org.ini4j.Ini;
+import org.ui.SceneManager;
 
 import java.io.*;
 import java.net.URISyntaxException;
 
 public final class SessionContext {
+
+    private SceneManager manager;
 
     private static SessionContext instance;
 
@@ -28,10 +31,19 @@ public final class SessionContext {
 
     public static void init() {
         instance = new SessionContext();
+        //instance.manager = manager;
+    }
+
+    public static void setManager(SceneManager manager) {
+        instance.manager = manager;
     }
 
     public static SessionContext get() {
         return instance;
+    }
+
+    public static SceneManager getManager() {
+        return instance.manager;
     }
 
     /**
@@ -51,23 +63,23 @@ public final class SessionContext {
         }
     }
 
-    public void autoSetUser(String user) {
-        prefs.put("login", "user", user);
+    public static void autoSetUser(String user) {
+        instance.prefs.put("login", "user", user);
     }
 
-    public void autoSetPass(String pass) {
-        prefs.put("login", "pass", pass);
+    public static void autoSetPass(String pass) {
+        instance.prefs.put("login", "pass", pass);
     }
 
-    public boolean isRemembering() {
-        return remembering;
+    public static boolean isRemembering() {
+        return instance.remembering;
     }
 
-    public void setRemembering(boolean value) {
-        remembering = value;
+    public static void setRemembering(boolean value) {
+        instance.remembering = value;
     }
 
-    public String getPreference(String section, String key) {
-        return prefs.get(section, key);
+    public static String getPreference(String section, String key) {
+        return instance.prefs.get(section, key);
     }
 }
