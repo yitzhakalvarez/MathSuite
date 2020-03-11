@@ -22,6 +22,7 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.context.SessionContext;
 import org.context.module.Module;
+import org.context.module.MultiplicationTable;
 import org.context.module.TestModule;
 import org.context.module.VisualizingFractions;
 import org.ui.SceneManager;
@@ -51,9 +52,8 @@ public class ModuleController {
         /* the actual module's themselves */
         final ArrayList<Module> modules = new ArrayList<>();
 
-        for (int i = 0; i < 25; i++) {
-            modules.add(new VisualizingFractions());
-        }
+        modules.add(new VisualizingFractions());
+        modules.add(new MultiplicationTable());
 
         /* The module represented as a JavaFX scene node */
         final ArrayList<Node> moduleNodes = new ArrayList<>();

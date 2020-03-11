@@ -1,6 +1,5 @@
 package org.context.module;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,14 +7,12 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 /**
  * Author: Alec Lehmphul
@@ -114,8 +111,9 @@ public class VisualizingFractions extends Module {
                 " will be split into that many equal parts.\n" +
                 " Press the button below to show.");
         Button nButton = new Button("1/n");
+        Label tooBig = new Label("");
 
-        vbox.getChildren().addAll(nInfo, nField, nButton);
+        vbox.getChildren().addAll(nInfo, nField, nButton, tooBig);
         vbox.setSpacing(10.0);
         pane.add(vbox, 1, 5);
 
@@ -124,15 +122,21 @@ public class VisualizingFractions extends Module {
             public void handle(ActionEvent actionEvent) {
                 ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("", 1));
                 int n = Integer.parseInt(nField.getText());
-
-                for (int i = 1; i < n; i++)
-                    pieChartData.add(new PieChart.Data("", 1));
-                chart.setData(pieChartData);
-                if (n == 1)
-                    chart.setTitle("Full Circle");
-                else
-                    chart.setTitle("One Circle Divided into " + nField.getText() + " Equal Parts");
-                pane.add(chart, 1, 1);
+                if (n > 500)
+                    tooBig.setText("Please enter a smaller number.");
+                else if(n < 0)
+                    tooBig.setText("Please enter a positive number.");
+                else {
+                    tooBig.setText("");
+                    for (int i = 1; i < n; i++)
+                        pieChartData.add(new PieChart.Data("", 1));
+                    chart.setData(pieChartData);
+                    if (n == 1)
+                        chart.setTitle("Full Circle");
+                    else
+                        chart.setTitle("One Circle Divided into " + nField.getText() + " Equal Parts");
+                    pane.add(chart, 1, 1);
+                }
             }
         });
 

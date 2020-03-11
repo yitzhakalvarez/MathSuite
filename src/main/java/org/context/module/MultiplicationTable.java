@@ -1,16 +1,13 @@
 package org.context.module;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import java.util.ArrayList;
 
 /**
@@ -18,12 +15,8 @@ import java.util.ArrayList;
  * This class is creates a multiplication table which
  * will be part of the student's resources
  */
-public class MultiplicationTable extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Multiplication Table");
-
+public class MultiplicationTable extends Module {
+    public Parent build() {
         //  Creates the rectangle boxes for my grid(columns) and saves it in an ArrayList
         ArrayList<Rectangle> columns = new ArrayList<Rectangle>();
         for (int i = 0; i < 13; i++) {
@@ -105,15 +98,7 @@ public class MultiplicationTable extends Application {
         //  Makes grid lines visible
         pane.setGridLinesVisible(true);
 
-        //  Adds grid to window
-        primaryStage.setScene(new Scene(pane, 500, 600));
-
         //  Makes window visible
-        primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
+        return pane;
     }
 }
