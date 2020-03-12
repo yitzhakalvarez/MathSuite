@@ -122,7 +122,7 @@ public class VisualizingFractions extends Module {
             public void handle(ActionEvent actionEvent) {
                 ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("", 1));
                 int n = Integer.parseInt(nField.getText());
-                if (n > 500)
+                if (n > 200)
                     tooBig.setText("Please enter a smaller number.");
                 else if(n < 0)
                     tooBig.setText("Please enter a positive number.");
