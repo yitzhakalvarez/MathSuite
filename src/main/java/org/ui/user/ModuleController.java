@@ -21,12 +21,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.context.SessionContext;
+import org.context.module.FractionExercise;
 import org.context.module.Module;
 import org.context.module.MultiplicationTable;
-import org.context.module.TestModule;
 import org.context.module.VisualizingFractions;
 import org.ui.SceneManager;
 
+import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -54,6 +55,7 @@ public class ModuleController {
 
         modules.add(new VisualizingFractions());
         modules.add(new MultiplicationTable());
+        modules.add(new FractionExercise());
 
         /* The module represented as a JavaFX scene node */
         final ArrayList<Node> moduleNodes = new ArrayList<>();
@@ -97,8 +99,12 @@ public class ModuleController {
                     - play.getHeight() / 2, header.boundsInParentProperty(), play.heightProperty()));
 
             play.setOnAction(action -> {
-                SessionContext.getManager().showView(module.build());
-                module.init();
+                try {
+                    SessionContext.getManager().showView(module.build());
+                    module.init();
+                } catch (Exception e) {
+                    System.out.println("Problem Loading Module");
+                }
             });
 
             StackPane.setMargin(play, new Insets(0, 12, 0, 0));

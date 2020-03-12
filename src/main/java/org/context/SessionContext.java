@@ -20,7 +20,7 @@ public final class SessionContext {
 
     private boolean remembering;
 
-    public SessionContext()  {
+    public SessionContext() {
         try {
             prefs = new Ini(new File(SessionContext.class.getResource("/data/config.ini").toURI()));
             remembering = Boolean.parseBoolean(prefs.get("login", "remember"));
@@ -31,7 +31,6 @@ public final class SessionContext {
 
     public static void init() {
         instance = new SessionContext();
-        //instance.manager = manager;
     }
 
     public static void setManager(SceneManager manager) {

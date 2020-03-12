@@ -74,4 +74,8 @@ public final class SceneManager {
     public void showView(Parent parent) {
         scene.setRoot(parent);
     }
+
+    public void setFullScreen(boolean fullscreen) {
+        stage.setFullScreen(fullscreen);
+    }
 }

@@ -2,6 +2,8 @@ package org.context.module;
 
 import javafx.scene.Parent;
 
+import java.io.IOException;
+
 public abstract class Module {
 
     public Module() {
@@ -11,5 +13,5 @@ public abstract class Module {
         System.out.println(getClass().getSimpleName() + " module has started");
     }
 
-    public abstract Parent build();
+    public abstract Parent build() throws IOException;
 }
