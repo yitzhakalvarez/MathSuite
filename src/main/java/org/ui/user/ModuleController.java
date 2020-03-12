@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.effects.JFXDepthManager;
-import com.jfoenix.utils.JFXUtilities;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -12,8 +11,10 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -25,12 +26,7 @@ import org.context.module.FractionExercise;
 import org.context.module.Module;
 import org.context.module.MultiplicationTable;
 import org.context.module.VisualizingFractions;
-import org.ui.SceneManager;
-
-import java.security.spec.ECField;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static javafx.animation.Interpolator.EASE_BOTH;
@@ -60,7 +56,6 @@ public class ModuleController {
         /* The module represented as a JavaFX scene node */
         final ArrayList<Node> moduleNodes = new ArrayList<>();
 
-
         modules.forEach(module -> {
             final StackPane child = new StackPane();
             child.setPadding(new Insets(10, 5, 0, 10));
@@ -83,10 +78,6 @@ public class ModuleController {
             body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: #2d6a71;");
 
             final VBox content = new VBox(header, body);
-
-           // Random random = new Random();
-           // int nextInt = random.nextInt(256*256*256);
-
 
             final JFXButton play = new JFXButton();
             play.setButtonType(JFXButton.ButtonType.RAISED);
@@ -136,6 +127,6 @@ public class ModuleController {
         scrollPane.setPrefSize(700, 400);
         Platform.runLater(() -> scrollPane.requestLayout());
 
-        pane.getChildren().add(scrollPane);
+        pane.getChildren().addAll(scrollPane);
     }
 }

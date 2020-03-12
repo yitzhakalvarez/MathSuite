@@ -308,6 +308,6 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="button" layoutX="491.0" layoutY="314.0" mnemonicParsing="false" onAction="#checkAnswers" prefHeight="54.0" prefWidth="114.0" text="Check Answers" />
+      <Button fx:id="button" layoutX="451.0" layoutY="314.0" mnemonicParsing="false" onAction="#checkAnswers" prefHeight="54.0" prefWidth="114.0" text="Check Answers" />
    </children>
 </AnchorPane>

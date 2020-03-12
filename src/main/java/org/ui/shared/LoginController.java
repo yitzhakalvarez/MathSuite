@@ -8,6 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.*;
 import org.context.SessionContext;
 
+/**
+ * Author: Jacob Stempin
+ *
+ * Handles user login / remembering credentials
+ */
 public class LoginController {
 
     @FXML

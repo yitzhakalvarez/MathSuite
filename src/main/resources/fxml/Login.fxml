@@ -11,7 +11,7 @@
 
 <StackPane fx:id="mainPane" prefHeight="238.0" prefWidth="386.0" stylesheets="@../css/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ui.shared.LoginController">
    <children>
-      <Pane fx:id="loginPane" layoutX="28.0" layoutY="14.0" prefHeight="175.0" prefWidth="330.0" stylesheets="@../css/Global.css">
+      <Pane fx:id="loginPane" layoutX="28.0" layoutY="14.0" prefHeight="254.0" prefWidth="401.0" stylesheets="@../css/Global.css">
          <children>
             <JFXPasswordField fx:id="passwordField" focusColor="#4b87bf" layoutX="103.0" layoutY="104.0" prefHeight="25.0" prefWidth="164.0" promptText="Password" unFocusColor="#757474">
                <font>

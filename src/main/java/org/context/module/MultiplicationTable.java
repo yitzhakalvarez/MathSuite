@@ -1,6 +1,5 @@
 package org.context.module;
 
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
  * will be part of the student's resources
  */
 public class MultiplicationTable extends Module {
+
     public Parent build() {
         //  Creates the rectangle boxes for my grid(columns) and saves it in an ArrayList
         ArrayList<Rectangle> columns = new ArrayList<Rectangle>();
