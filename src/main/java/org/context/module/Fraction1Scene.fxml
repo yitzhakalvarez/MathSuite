@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="pane" style="-fx-background-color: e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Fraction1Scene">
+   <children>
+      <Text layoutX="168.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evaluate the expressions:" underline="true">
+         <font>
+            <Font name="Elephant" size="21.0" />
+         </font>
+      </Text>
+      <VBox alignment="CENTER" layoutX="65.0" layoutY="42.0" prefHeight="353.0" prefWidth="85.0" spacing="36.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1 :  " wrappingWidth="29.64453125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2 :  " wrappingWidth="29.931640625">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3 :  ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4 :  ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5 :  ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <HBox id="h1" fx:id="hbox1" layoutX="129.0" layoutY="68.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="+" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text layoutX="43.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="=" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="62.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <TextField fx:id="q1Num" />
+                  <Line endX="100.0" startX="166.5" />
+                  <TextField fx:id="q1Denom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="hbox2" layoutX="129.0" layoutY="128.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="+" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text layoutX="43.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="=" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="62.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <TextField fx:id="q2Num" />
+                  <Line endX="100.0" startX="166.5" />
+                  <TextField fx:id="q2Denom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="hbox3" layoutX="129.0" layoutY="190.0" prefHeight="51.0" prefWidth="340.0" spacing="5.0" translateY="3.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="5.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text layoutX="43.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="=" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="62.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <TextField fx:id="q3Num" />
+                  <Line endX="100.0" startX="166.5" />
+                  <TextField fx:id="q3Denom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="hbox4" layoutX="129.0" layoutY="253.0" prefHeight="51.0" prefWidth="340.0" spacing="5.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" translateY="4.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="5.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="91">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text layoutX="43.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="=" translateY="5.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="62.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <TextField fx:id="q4Num" />
+                  <Line endX="100.0" startX="166.5" />
+                  <TextField fx:id="q4Denom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="hbox5" layoutX="129.0" layoutY="315.0" prefHeight="51.0" prefWidth="340.0" spacing="5.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" translateY="4.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="+" translateY="5.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="28.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-27.437576293945312" startX="-35.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="5.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" prefHeight="51.0" prefWidth="30.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-92.08210754394531" startX="-100.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="=" translateY="6.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="q5Num" />
+                  <Line startX="-100.0" />
+                  <TextField fx:id="q5Denom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="button" layoutX="491.0" layoutY="314.0" mnemonicParsing="false" onAction="#checkAnswers" prefHeight="54.0" prefWidth="114.0" text="Check Answers" />
+   </children>
+</AnchorPane>
