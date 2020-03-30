@@ -15,8 +15,8 @@ import java.io.IOException;
 
 /**
  * Author:  Alec Lehmphul
- * This class is the controller class for "FractionHomework1.java".
- * It holds all the components and actionEvents for "FractionHomework1.java".
+ * This class is the controller class for "FractionExercise".  It holds
+ * all the components and actionEvents for the exercise.
  */
 
 public class FractionExercise extends Module {

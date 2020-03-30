@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import org.context.SessionContext;
+import org.ui.user.ModuleController;
 
 /**
  * Author: Alec Lehmphul
@@ -31,14 +33,14 @@ public class VisualizingFractions extends Module {
 
         //  Creates buttons and adds them to grid
         Button half = new Button("Halves");
-        pane.add(half, 0, 0);
+        pane.add(half, 1, 1);
 
         Button third = new Button("Thirds");
-        pane.add(third, 0, 1);
+        pane.add(third, 1, 2);
         pane.setPadding(new Insets(10, 10, 10, 10));
 
         Button forth = new Button("Forths");
-        pane.add(forth, 0, 2);
+        pane.add(forth, 1, 3);
 
 
         // gives the 1st button an event handler
@@ -52,7 +54,7 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Two-Halves");
-                pane.add(chart, 1, 1);
+                pane.add(chart, 2, 2);
             }
         });
 
@@ -69,7 +71,7 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Three-Thirds");
-                pane.add(chart, 1, 1);
+                pane.add(chart, 2, 2);
             }
         });
 
@@ -86,7 +88,7 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Four-Forths");
-                pane.add(chart, 1, 1);
+                pane.add(chart, 2, 2);
             }
         });
 
@@ -99,7 +101,7 @@ public class VisualizingFractions extends Module {
                 FXCollections.observableArrayList(new PieChart.Data("", 1));
         chart.setData(fullCircle);
         chart.setTitle("Full Circle");
-        pane.add(chart, 1, 1);
+        pane.add(chart, 2, 2);
 
 
         //  creates text field and button
@@ -115,7 +117,7 @@ public class VisualizingFractions extends Module {
 
         vbox.getChildren().addAll(nInfo, nField, nButton, tooBig);
         vbox.setSpacing(10.0);
-        pane.add(vbox, 1, 5);
+        pane.add(vbox, 2, 6);
 
         nButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -124,7 +126,9 @@ public class VisualizingFractions extends Module {
                 int n = Integer.parseInt(nField.getText());
                 if (n > 200)
                     tooBig.setText("Please enter a smaller number.");
-                else if(n < 0)
+                else if (n == 0)
+                    tooBig.setText("Please enter a number greater than 0.");
+                else if (n < 0)
                     tooBig.setText("Please enter a positive number.");
                 else {
                     tooBig.setText("");
@@ -135,7 +139,7 @@ public class VisualizingFractions extends Module {
                         chart.setTitle("Full Circle");
                     else
                         chart.setTitle("One Circle Divided into " + nField.getText() + " Equal Parts");
-                    pane.add(chart, 1, 1);
+                    pane.add(chart, 2, 2);
                 }
             }
         });

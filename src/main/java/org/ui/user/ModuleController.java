@@ -11,10 +11,8 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -22,10 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.context.SessionContext;
-import org.context.module.FractionExercise;
+import org.context.module.*;
 import org.context.module.Module;
-import org.context.module.MultiplicationTable;
-import org.context.module.VisualizingFractions;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -92,6 +89,7 @@ public class ModuleController {
             play.setOnAction(action -> {
                 try {
                     SessionContext.getManager().showView(module.build());
+                    SessionContext.getManager().setFullScreen(true);
                     module.init();
                 } catch (Exception e) {
                     System.out.println("Problem Loading Module");
