@@ -3,7 +3,6 @@ package org.context;
 import org.context.structures.User;
 import org.ini4j.Ini;
 import org.ui.SceneManager;
-
 import java.io.*;
 import java.net.URISyntaxException;
 

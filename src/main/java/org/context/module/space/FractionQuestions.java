@@ -1,3 +1,5 @@
+package org.context.module.space;
+
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +17,7 @@ public class FractionQuestions {
 
         switch (number) {
             case 5:
-                picture = new Image(new File("src/q5.PNG").toURI().toString());
+                picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q5.PNG"));
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
@@ -24,7 +26,7 @@ public class FractionQuestions {
                 return question;
 
             case 6:
-                picture = new Image(new File("src/q6.PNG").toURI().toString());
+                picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q6.PNG"));
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
@@ -33,7 +35,7 @@ public class FractionQuestions {
                 return question;
 
             case 7:
-                picture = new Image(new File("src/q7.PNG").toURI().toString());
+                picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q7.PNG"));
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
@@ -42,7 +44,7 @@ public class FractionQuestions {
                 return question;
 
             case 8:
-                picture = new Image(new File("src/q8.PNG").toURI().toString());
+                picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q8.PNG"));
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
@@ -51,7 +53,7 @@ public class FractionQuestions {
                 return question;
 
             case 9:
-                picture = new Image(new File("src/q9.PNG").toURI().toString());
+                picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q9.PNG"));
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);

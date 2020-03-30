@@ -1,3 +1,5 @@
+package org.context.module.space;
+
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +25,7 @@ public class Rock {
 
     public Rock() {
         pathTransition = new PathTransition();
-        image = new Image(new File("src/SpaceRock.png").toURI().toString());
+        image = new Image(getClass().getResourceAsStream("/module_assets/SpaceRock.png"));
         imageView = new ImageView(image);
     }
 

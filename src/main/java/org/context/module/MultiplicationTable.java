@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class MultiplicationTable extends Module {
 
+    @Override
     public Parent build() {
         //  Creates the rectangle boxes for my grid(columns) and saves it in an ArrayList
         ArrayList<Rectangle> columns = new ArrayList<Rectangle>();

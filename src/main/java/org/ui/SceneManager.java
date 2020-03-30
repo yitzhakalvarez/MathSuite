@@ -75,6 +75,7 @@ public final class SceneManager {
         scene.setRoot(parent);
     }
 
+    //not used yet, Might use to
     public void setFullScreen(boolean fullscreen) {
         stage.setFullScreen(fullscreen);
     }

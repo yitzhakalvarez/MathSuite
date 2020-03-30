@@ -1,3 +1,5 @@
+package org.context.module.space;
+
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -5,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,12 +21,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.context.module.Module;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SpaceGame extends Application {
+public class SpaceGame extends Module {
 
     public MediaPlayer mediaPlayer;
 
@@ -41,21 +45,15 @@ public class SpaceGame extends Application {
     public static Group currentContainer;
     public static AnchorPane root;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
-    public void start(Stage stage) throws Exception {
+    public Parent build() {
 
-        Media sound = new Media(new File("src/8bitSound.mp3").toURI().toString());
+        Media sound = new Media(getClass().getResource("/module_assets/8bitSound.mp3").toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
         root = new AnchorPane();
-        Scene scene = new Scene(root);
-
-        Image backdropImage = new Image(new File("src/SpaceBackdrop (2).jpg").toURI().toString());
+        Image backdropImage = new Image(getClass().getResourceAsStream("/module_assets/SpaceBackdrop (2).jpg"));
 
         BackgroundImage backdrop = new BackgroundImage(backdropImage,
                 BackgroundRepeat.NO_REPEAT,
@@ -139,7 +137,7 @@ public class SpaceGame extends Application {
             });
         }
 
-        Image spacePerson = new Image(new File("src/PlayerSpriteAlien.png").toURI().toString());
+        Image spacePerson = new Image(getClass().getResourceAsStream("/module_assets/PlayerSpriteAlien.png"));
         ImageView personView = new ImageView(spacePerson);
         personView.setFitHeight(200);
         personView.setFitWidth(200);
@@ -148,7 +146,7 @@ public class SpaceGame extends Application {
         personContainer.setLayoutX(500);
         personContainer.setLayoutY(900);
 
-        Image spacePerson1 = new Image(new File("src/PlayerSprite.png").toURI().toString());
+        Image spacePerson1 = new Image(getClass().getResourceAsStream("/module_assets/PlayerSprite.png"));
         ImageView personView1 = new ImageView(spacePerson1);
         personView1.setFitHeight(300);
         personView1.setFitWidth(300);
@@ -157,7 +155,7 @@ public class SpaceGame extends Application {
         personContainer1.setLayoutX(1000);
         personContainer1.setLayoutY(800);
 
-        Image rockMountain = new Image(new File("src/rockMountain.png").toURI().toString());
+        Image rockMountain = new Image(getClass().getResourceAsStream("/module_assets/rockMountain.png"));
         ImageView rockMountainView = new ImageView(rockMountain);
         rockMountainView.setFitHeight(800);
         rockMountainView.setFitWidth(800);
@@ -177,14 +175,16 @@ public class SpaceGame extends Application {
         root.getChildren().add(questionContainer);
 
 
-        scene.getStylesheets().addAll(getClass().getResource(
-                "textBorder.css"
+        root.getStylesheets().addAll(getClass().getResource(
+                "/module_assets/textBorder.css"
         ).toExternalForm());
 
         root.setBackground(new Background(backdrop));
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+
+        return root;
+       // stage.setScene(scene);
+       // stage.setFullScreen(true);
+       // stage.show();
     }
 
 
@@ -291,11 +291,11 @@ public class SpaceGame extends Application {
 
     public void destroyRock(Rock rock, Group rockContainer, HBox hbox, Group currentQuestionContainer)  {
 
-        Media sound1 = new Media(new File("src/8-bit-explosion.mp3").toURI().toString());
+        Media sound1 = new Media(getClass().getResource("/module_assets/8-bit-explosion.mp3").toString());
         MediaPlayer rockExplosionSound = new MediaPlayer(sound1);
         rockExplosionSound.play();
 
-        rock.setImage(new Image(new File("src/RockExplosion.png").toURI().toString()));
+        rock.setImage(new Image(getClass().getResourceAsStream("/module_assets/RockExplosion.png")));
         rock.setImageView(new ImageView(rock.getImage()));
 
         rockContainer.getChildren().add(rock.getImageView());

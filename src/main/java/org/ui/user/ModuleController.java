@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import org.context.SessionContext;
 import org.context.module.*;
 import org.context.module.Module;
+import org.context.module.space.SpaceGame;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -49,6 +50,7 @@ public class ModuleController {
         modules.add(new VisualizingFractions());
         modules.add(new MultiplicationTable());
         modules.add(new FractionExercise());
+        modules.add(new SpaceGame());
 
         /* The module represented as a JavaFX scene node */
         final ArrayList<Node> moduleNodes = new ArrayList<>();
@@ -92,6 +94,7 @@ public class ModuleController {
                     SessionContext.getManager().setFullScreen(true);
                     module.init();
                 } catch (Exception e) {
+                    e.printStackTrace();
                     System.out.println("Problem Loading Module");
                 }
             });
