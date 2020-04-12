@@ -3,6 +3,7 @@ package org.ui.user;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXScrollPane;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -12,12 +13,15 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import org.context.SessionContext;
 import org.context.module.*;
@@ -32,16 +36,26 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class ModuleController {
 
-    private ScrollPane scrollPane;
-
     @FXML
     private StackPane pane;
 
-    /* The pane that holds each "module" */
-    private JFXMasonryPane masonryPane;
-
     @FXML
     public void initialize() {
+        final JFXTabPane tabPane = new JFXTabPane();
+        tabPane.getStylesheets().addAll(getClass().getResource(
+                "/css/Global.css"
+        ).toExternalForm());
+        //pane.\\\
+        //pane.setSide(Side.RIGHT);
+        Tab tab1 = new Tab("Exercises", buildExercises());
+        Tab tab2 = new Tab("Lectures", buildLectures());
+        Tab tab3 = new Tab("Homework");
+        tabPane.getTabs().addAll(tab1,tab2,tab3);
+        tabPane.tabMinWidthProperty().bind(tabPane.widthProperty().divide(tabPane.getTabs().size()).subtract(25));
+        pane.getChildren().addAll(tabPane);
+    }
+
+    private ScrollPane buildExercises() {
         AtomicInteger count = new AtomicInteger();
 
         /* the actual module's themselves */
@@ -114,11 +128,11 @@ public class ModuleController {
             count.getAndIncrement();
         });
 
-        masonryPane = new JFXMasonryPane();
-        masonryPane.setPrefSize(400, 400);
-        masonryPane.getChildren().addAll(moduleNodes);
+        final JFXMasonryPane moduleMasonryPane = new JFXMasonryPane();
+        moduleMasonryPane.setPrefSize(400, 400);
+        moduleMasonryPane.getChildren().addAll(moduleNodes);
 
-        scrollPane = new ScrollPane(masonryPane);
+        final ScrollPane scrollPane = new ScrollPane(moduleMasonryPane);
         //prevent horizontal scrolling
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToWidth(true);
@@ -126,8 +140,36 @@ public class ModuleController {
         JFXScrollPane.smoothScrolling(scrollPane);
 
         scrollPane.setPrefSize(700, 400);
-        Platform.runLater(() -> scrollPane.requestLayout());
+        Platform.runLater(scrollPane::requestLayout);
 
-        pane.getChildren().addAll(scrollPane);
+        return scrollPane;
+    }
+
+    /* displays youtube videos, could be replaced by recorded lectures */
+    private ScrollPane buildLectures() {
+        final ArrayList<Node> videos = new ArrayList<>();
+        WebView webview = new WebView();
+        webview.getEngine().load(
+                "https://www.youtube.com/embed/5juto2ze8Lg"
+        );
+        webview.setPrefSize(640, 390);
+
+        videos.add(webview);
+
+        final JFXMasonryPane lectureMasonryPane = new JFXMasonryPane();
+        lectureMasonryPane.setPrefSize(400, 400);
+        lectureMasonryPane.getChildren().addAll(videos);
+
+        final ScrollPane scrollPane = new ScrollPane(lectureMasonryPane);
+        //prevent horizontal scrolling
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToWidth(true);
+
+        JFXScrollPane.smoothScrolling(scrollPane);
+
+        scrollPane.setPrefSize(700, 400);
+        Platform.runLater(scrollPane::requestLayout);
+
+        return scrollPane;
     }
 }

@@ -13,12 +13,7 @@
     -fx-background-position: right center;
 }
 
-.jfx-text-field {
-
-}
-
 .jfx-password-field {
-    -fx-background-image: url('/images/lock.png');
     -fx-background-size: 30;
 }
 
@@ -26,3 +21,17 @@
     -fx-background-radius: 25;
 }
 
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: BLACK;
+}
+/*.jfx-tab-pane .tab-selected-line{
+    -fx-stroke: BLACK;
+}*/
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: white;
+}
+
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #1E1E1E;
+}
