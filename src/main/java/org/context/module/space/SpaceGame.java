@@ -5,12 +5,16 @@ import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -19,19 +23,31 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.context.module.Module;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+/**
+ * Author:  Alec Lehmphul
+ * This class is creates a Space Game module
+ * and keeps track of scores
+ */
+
+
 public class SpaceGame extends Module {
 
     public MediaPlayer mediaPlayer;
+    public static Rectangle2D primaryScreenBounds;
 
-    public static int stageDamage = 0, question = 0;
+    public static int stageDamage = 0, question = 0, guesses = 0;
+    public static double progress = 0;
 
     private static int currentRandom = randomizer(), score = 1;
     private static ArrayList<Button> buttons;
@@ -39,11 +55,13 @@ public class SpaceGame extends Module {
     private static Label questionLabel;
     private static ArrayList<Integer> possibleAnswers;
 
-    public static Group questionContainer, previousG;
-
+    public static Group  previousG;
+    public static HBox questionContainer;
+    public static ProgressBar progressBar;
+    public static Text damageText;
     public static Rock currentRock;
     public static Group currentContainer;
-    public static AnchorPane root;
+    public static BorderPane root;
 
     @Override
     public Parent build() {
@@ -52,7 +70,9 @@ public class SpaceGame extends Module {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        root = new AnchorPane();
+        primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
+        root = new BorderPane();
         Image backdropImage = new Image(getClass().getResourceAsStream("/module_assets/SpaceBackdrop (2).jpg"));
 
         BackgroundImage backdrop = new BackgroundImage(backdropImage,
@@ -66,7 +86,7 @@ public class SpaceGame extends Module {
 
 
         HBox hbox = new HBox();   // contain that will hold the buttons
-        hbox.setSpacing(125);
+        hbox.setSpacing(primaryScreenBounds.getMaxX()/8.0);
 
         buttons = new ArrayList<Button>();
         buttons.add(new Button());
@@ -75,7 +95,7 @@ public class SpaceGame extends Module {
         buttons.add(new Button());
 
 
-        questionContainer = new Group();
+        questionContainer = new HBox();
         previousG = null;
 
         questions = new String[5];
@@ -89,8 +109,8 @@ public class SpaceGame extends Module {
         questionLabel.getStyleClass().add("outline");
         questionLabel.setTextFill(Color.WHITE);
         questionContainer.getChildren().add(questionLabel);
-        questionContainer.setLayoutX(625);
-        questionContainer.setLayoutY(675);
+        //questionContainer.setLayoutX(primaryScreenBounds.getMaxX()/3.0);
+        //questionContainer.setLayoutY(primaryScreenBounds.getMaxY()/3.0);
 
 
         currentContainer = new Group();
@@ -100,6 +120,8 @@ public class SpaceGame extends Module {
         currentRock.addTransition(currentContainer);
         root.getChildren().add(currentContainer);
 
+
+        progressBar = new ProgressBar(0);
 
         for (int i = 0; i < 4; i++) {
             buttons.get(i).setMinSize(75, 75);
@@ -123,8 +145,11 @@ public class SpaceGame extends Module {
                         if (currentRock.getPathTransition().getStatus().equals(Animation.Status.RUNNING) && question < 9) {
                             incrementScore();
                             destroyRock(currentRock, currentContainer, hbox, questionContainer);
+                            progress += (1.0/9.0);
+                            progressBar.setProgress(progress);
                         }
                         if (question == 9) {
+                            currentContainer.setVisible(false);
                             endGame();
                         }
                         else {
@@ -132,47 +157,77 @@ public class SpaceGame extends Module {
                             nextQuestion(question, root);
                         }
                     }
-                    System.out.println(p + "\t" + currentRandom);   // For debugging with the randomizer
+                    else {
+                        guesses++;
+                        damageText.setText("Guesses/Rock Damage Left: " + (4 - (stageDamage + guesses)));
+                        if (guesses + stageDamage > 4)
+                            Rock.gameOver(root, false);
+                    }
+                    //  System.out.println(p + "\t" + currentRandom);   -- For debugging with the randomizer
                 }
             });
         }
 
         Image spacePerson = new Image(getClass().getResourceAsStream("/module_assets/PlayerSpriteAlien.png"));
         ImageView personView = new ImageView(spacePerson);
-        personView.setFitHeight(200);
-        personView.setFitWidth(200);
+        personView.setFitHeight(primaryScreenBounds.getMaxX()/10.0);
+        personView.setFitWidth(primaryScreenBounds.getMaxX()/10.0);
         Group personContainer = new Group();
         personContainer.getChildren().add(personView);
-        personContainer.setLayoutX(500);
-        personContainer.setLayoutY(900);
+        personContainer.setLayoutX(primaryScreenBounds.getMaxX()/2.0 - primaryScreenBounds.getMaxX()/3.0);
+        personContainer.setLayoutY(primaryScreenBounds.getMaxY() - primaryScreenBounds.getMaxY()/6.5);
 
         Image spacePerson1 = new Image(getClass().getResourceAsStream("/module_assets/PlayerSprite.png"));
         ImageView personView1 = new ImageView(spacePerson1);
-        personView1.setFitHeight(300);
-        personView1.setFitWidth(300);
+        personView1.setFitHeight(primaryScreenBounds.getMaxX()/8);
+        personView1.setFitWidth(primaryScreenBounds.getMaxX()/8);
         Group personContainer1 = new Group();
         personContainer1.getChildren().add(personView1);
-        personContainer1.setLayoutX(1000);
-        personContainer1.setLayoutY(800);
+        personContainer1.setLayoutX(primaryScreenBounds.getMaxX()/2.0 + primaryScreenBounds.getMaxX()/7.0);
+        personContainer1.setLayoutY(primaryScreenBounds.getMaxY() - primaryScreenBounds.getMaxY()/5);
 
         Image rockMountain = new Image(getClass().getResourceAsStream("/module_assets/rockMountain.png"));
         ImageView rockMountainView = new ImageView(rockMountain);
-        rockMountainView.setFitHeight(800);
-        rockMountainView.setFitWidth(800);
+        rockMountainView.setFitHeight(primaryScreenBounds.getMaxX()/3.0);
+        rockMountainView.setFitWidth(primaryScreenBounds.getMaxX()/3.0);
         Group rockMountainContainer = new Group();
         rockMountainContainer.getChildren().add(rockMountainView);
-        rockMountainContainer.setLayoutX(-200);
-        rockMountainContainer.setLayoutY(550);
+        rockMountainContainer.setLayoutX(primaryScreenBounds.getMinX() - primaryScreenBounds.getMaxX()/7.5);
+        rockMountainContainer.setLayoutY(primaryScreenBounds.getMaxY()/1.65);
 
-        root.getChildren().addAll(personContainer, personContainer1, rockMountainContainer);
+        root.getChildren().addAll(rockMountainContainer, personContainer, personContainer1);
 
-        hbox.setLayoutX(625);
-        hbox.setLayoutY(800);
+
+        damageText = new Text("Incorrect Answers/Rock Damage Left: " + (4 - (stageDamage + guesses)));
+        damageText.setFill(Color.WHITE);
+        damageText.setStyle("-fx-font: 26 arial;");
+
+        HBox progress = new HBox();
+        Text progressText = new Text("Progress: ");
+        progressText.setFill(Color.WHITE);
+        progressText.setStyle("-fx-font: 26 arial;");
+
+        progress.getChildren().addAll(progressText, progressBar);
+        progress.setAlignment(Pos.CENTER);
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(damageText, progress);
+        vBox.setSpacing(25);
+        //damageIndicator.setTranslateX(primaryScreenBounds.getMaxX()/2.0);
+        vBox.setAlignment(Pos.CENTER);
+        root.setTop(vBox);
+
+
+        hbox.setLayoutX(primaryScreenBounds.getMinX()/4.0);
+        hbox.setLayoutY((primaryScreenBounds.getMaxY()/3.0)*2);
         hbox.setAlignment(Pos.CENTER);
 
         hbox.getChildren().addAll(buttons.get(0), buttons.get(1), buttons.get(2), buttons.get(3));
-        root.getChildren().add(hbox);
-        root.getChildren().add(questionContainer);
+        hbox.setPadding(new Insets(0, 0, primaryScreenBounds.getMaxY()/4.0, 0));
+
+        questionContainer.setAlignment(Pos.CENTER);
+        root.setCenter(questionContainer);
+        root.setBottom(hbox);
 
 
         root.getStylesheets().addAll(getClass().getResource(
@@ -243,7 +298,7 @@ public class SpaceGame extends Module {
     }
 
 
-    public static void nextQuestion(int q, AnchorPane root) {
+    public static void nextQuestion(int q, BorderPane root) {
         currentRandom = randomizer();
 
         for (int i = 0; i < 4; i++) {
@@ -264,8 +319,6 @@ public class SpaceGame extends Module {
         }
         else {
             questionLabel.setText("Find the equivalent fraction:");
-            questionContainer.setLayoutX(625);
-            questionContainer.setLayoutY(400);
 
             currentContainer = new Group();
 
@@ -276,8 +329,7 @@ public class SpaceGame extends Module {
 
 
             Group a = FractionQuestions.getCurrentQuestion(q);
-
-            root.getChildren().add(a);
+            root.setCenter(a);
         }
     }
 
@@ -289,7 +341,7 @@ public class SpaceGame extends Module {
 
 
 
-    public void destroyRock(Rock rock, Group rockContainer, HBox hbox, Group currentQuestionContainer)  {
+    public void destroyRock(Rock rock, Group rockContainer, HBox hbox, HBox currentQuestionContainer)  {
 
         Media sound1 = new Media(getClass().getResource("/module_assets/8-bit-explosion.mp3").toString());
         MediaPlayer rockExplosionSound = new MediaPlayer(sound1);
@@ -323,20 +375,32 @@ public class SpaceGame extends Module {
     public static void endGame() {
         root.getChildren().clear();
 
-        Rectangle rect = new Rectangle(900, 600);
-        rect.setFill(Color.WHITE);
+        Rectangle rect = new Rectangle(primaryScreenBounds.getMaxX() - primaryScreenBounds.getMaxX()/3.0, primaryScreenBounds.getMaxY() - primaryScreenBounds.getMaxY()/3.0);
+        rect.setFill(Color.DARKBLUE);
         rect.setStroke(Color.HONEYDEW);
 
-        Text text = new Text("GREAT JOB!\n\nYour Score: " + (score-stageDamage) + "\nStage Damage: " + stageDamage);
-        text.setFill(Color.BLACK);
-        text.setStyle("-fx-font: 30 arial;");
+        Image star = new Image(SpaceGame.class.getResourceAsStream("/module_assets/Star.png"));
+        ImageView starView = new ImageView(star);
+        starView.setFitHeight(primaryScreenBounds.getMaxX()/8);
+        starView.setFitWidth(primaryScreenBounds.getMaxX()/8);
+        Group starContainer = new Group();
+        starContainer.getChildren().add(starView);
+
+        starContainer.translateYProperty().setValue(primaryScreenBounds.getMaxY()/-5.0);
+        starContainer.translateXProperty().setValue(primaryScreenBounds.getMaxX()/-5.0);
         StackPane stack = new StackPane();
+        stack.getChildren().add(starContainer);
+
+        Text text = new Text("GREAT JOB!\n\nYour Score: " + (score-(stageDamage+guesses)) + "\nStage Damage: "
+                            + stageDamage + "\nIncorrect Answers: " + guesses);
+        text.setFill(Color.WHITE);
+        text.setStyle("-fx-font: 30 arial;");
         stack.getChildren().addAll(rect, text);
 
         stack.maxWidthProperty().bind(root.widthProperty());
         stack.minWidthProperty().bind(root.widthProperty());
         stack.maxHeightProperty().bind(root.heightProperty());
         stack.minHeightProperty().bind(root.heightProperty());
-        root.getChildren().add(stack);
+        root.setCenter(stack);
     }
 }

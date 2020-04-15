@@ -6,6 +6,11 @@ import javafx.scene.image.ImageView;
 
 import java.io.File;
 
+/**
+ * Author:  Alec Lehmphul
+ * This class is creates a fraction questions used in the Space Game module
+ */
+
 public class FractionQuestions {
 
     public static Group getCurrentQuestion(int number) {
@@ -21,8 +26,6 @@ public class FractionQuestions {
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
-                question.setLayoutX(870);
-                question.setLayoutY(600);
                 return question;
 
             case 6:
@@ -30,8 +33,6 @@ public class FractionQuestions {
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
-                question.setLayoutX(870);
-                question.setLayoutY(600);
                 return question;
 
             case 7:
@@ -39,8 +40,6 @@ public class FractionQuestions {
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
-                question.setLayoutX(870);
-                question.setLayoutY(600);
                 return question;
 
             case 8:
@@ -48,8 +47,6 @@ public class FractionQuestions {
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
-                question.setLayoutX(870);
-                question.setLayoutY(600);
                 return question;
 
             case 9:
@@ -57,8 +54,6 @@ public class FractionQuestions {
                 viewQuestion = new ImageView(picture);
                 question.getChildren().add(viewQuestion);
                 question.setVisible(true);
-                question.setLayoutX(870);
-                question.setLayoutY(600);
                 return question;
 
             default:
