@@ -64,7 +64,7 @@ public class SpaceGame extends Module {
     public static BorderPane root;
 
     @Override
-    public Parent build() {
+    public Parent setup() {
 
         Media sound = new Media(getClass().getResource("/module_assets/8bitSound.mp3").toString());
         mediaPlayer = new MediaPlayer(sound);
@@ -82,7 +82,7 @@ public class SpaceGame extends Module {
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true));
 
 
-        possibleAnswers = new ArrayList<Integer>();
+        possibleAnswers = new ArrayList<>();
 
 
         HBox hbox = new HBox();   // contain that will hold the buttons

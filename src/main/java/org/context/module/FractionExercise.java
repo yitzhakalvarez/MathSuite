@@ -73,7 +73,7 @@ public class FractionExercise extends Module {
     private Button button;
 
     @Override
-    public Parent build() throws IOException {
+    public Parent setup() throws IOException {
         return FXMLLoader.load(getClass().getResource("/fxml/FractionExercise.fxml"));
     }
 

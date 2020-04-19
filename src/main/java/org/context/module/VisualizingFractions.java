@@ -25,7 +25,7 @@ import org.ui.user.ModuleController;
 public class VisualizingFractions extends Module {
 
     @Override
-    public Parent build() {
+    public Parent setup() {
 
         GridPane pane = new GridPane();
         PieChart chart = new PieChart();
