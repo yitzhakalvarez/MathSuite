@@ -34,6 +34,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 
+/**
+ * Author: Jacob Stempin
+ */
 public class ModuleController {
 
     @FXML
@@ -48,7 +51,8 @@ public class ModuleController {
         //pane.\\\
         //pane.setSide(Side.RIGHT);
         Tab tab1 = new Tab("Exercises", buildExercises());
-        Tab tab2 = new Tab("Lectures", buildLectures());
+        Tab tab2 = new Tab("Lectures");
+        //Tab tab2 = new Tab("Lectures", buildLectures());
         Tab tab3 = new Tab("Homework");
         tabPane.getTabs().addAll(tab1,tab2,tab3);
         tabPane.tabMinWidthProperty().bind(tabPane.widthProperty().divide(tabPane.getTabs().size()).subtract(25));
@@ -84,7 +88,7 @@ public class ModuleController {
             version.setAlignment(Pos.TOP_LEFT);
             version.setPadding(new Insets(0, 165, 65, 0));
 
-            header.getChildren().addAll(version, new ImageView( new Image(getClass().getResourceAsStream("/images/math.png"), 80, 80, true, false)));
+            header.getChildren().addAll(version, new ImageView(new Image(getClass().getResourceAsStream("/images/math.png"), 80, 80, true, false)));
 
             final StackPane body = new StackPane();
             body.setMinHeight(40);

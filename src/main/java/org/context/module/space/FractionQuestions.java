@@ -19,7 +19,6 @@ public class FractionQuestions {
         Image picture;
         ImageView viewQuestion;
 
-
         switch (number) {
             case 5:
                 picture = new Image(FractionQuestions.class.getResourceAsStream("/module_assets/q5.PNG"));
