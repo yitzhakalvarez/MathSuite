@@ -78,7 +78,7 @@ public class FractionExercise extends Module {
     private Button button;
 
     @Override
-    public Parent build() throws IOException {
+    public Parent setup() throws IOException {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Pane parent = FXMLLoader.load(getClass().getResource("/fxml/FractionExercise.fxml"));
         parent.setPadding(new Insets(primaryScreenBounds.getMaxY()/2.0 - 395/2.0, primaryScreenBounds.getMaxX()/2.0 - 565/2.0, primaryScreenBounds.getMaxY()/2.0 - 395/2.0, primaryScreenBounds.getMaxX()/2.0 - 565/2.0));

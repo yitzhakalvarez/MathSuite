@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class AddingFractionsVideo extends Module {
     @Override
-    public Parent build() throws IOException {
+    public Parent setup() throws IOException {
         Media media = new Media(getClass().getResource("/module_assets/Adding Fractions with Different Denominators.mp4").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer);
