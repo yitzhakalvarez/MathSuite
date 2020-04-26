@@ -65,6 +65,7 @@ public class ModuleController {
         modules.add(new MultiplicationTable());
         modules.add(new FractionExercise());
         modules.add(new SpaceGame());
+        modules.add(new AddingFractionsVideo());
 
         /* The module represented as a JavaFX scene node */
         final ArrayList<Node> moduleNodes = new ArrayList<>();
