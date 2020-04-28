@@ -2,11 +2,14 @@ package org.context.module;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
+
 import java.util.ArrayList;
 
 /**
@@ -98,6 +101,10 @@ public class MultiplicationTable extends Module {
 
         //  Makes grid lines visible
         pane.setGridLinesVisible(true);
+
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
+        pane.setPrefSize(primaryScreenBounds.getMaxX(), primaryScreenBounds.getMaxY());
 
         //  Makes window visible
         return pane;

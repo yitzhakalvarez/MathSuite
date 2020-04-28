@@ -235,6 +235,7 @@ public class SpaceGame extends Module {
         ).toExternalForm());
 
         root.setBackground(new Background(backdrop));
+        root.setPrefSize(primaryScreenBounds.getMaxX(), primaryScreenBounds.getMaxY());
 
         return root;
        // stage.setScene(scene);
