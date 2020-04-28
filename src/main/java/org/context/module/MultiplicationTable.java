@@ -74,6 +74,8 @@ public class MultiplicationTable extends Module {
         //  Creates my grid pane, centers it within the window,
         //  and fills the background with the color white
         GridPane pane = new GridPane();
+        pane.setScaleX(1.75);
+        pane.setScaleY(1.75);
         pane.setAlignment(Pos.CENTER);
         pane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
