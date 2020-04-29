@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 /**
@@ -36,10 +37,13 @@ public class VisualizingFractions extends Module {
         //  Creates buttons and adds them to grid
         HBox buttons = new HBox();
         Button half = new Button("Halves");
+        half.setStyle("-fx-font: 20 arial;");
 
         Button third = new Button("Thirds");
-
+        third.setStyle("-fx-font: 20" +
+                " arial;");
         Button forth = new Button("Forths");
+        forth.setStyle("-fx-font: 20 arial;");
 
         // gives the 1st button an event handler
         // shows the circle split into halves
@@ -106,12 +110,17 @@ public class VisualizingFractions extends Module {
         //  of equal parts
         TextField nField = new TextField();
         nField.setText("1");
-        nField.setMaxWidth(primaryScreenBounds.getMaxX()/4.0);
-        Label nInfo = new Label("Enter a number and the circle\n" +
+        nField.setMaxWidth(primaryScreenBounds.getMaxX()/8.0);
+        nField.setScaleX(1.5);
+        nField.setScaleY(1.5);
+        Text nInfo = new Text("Enter a number and the circle\n" +
                 " will be split into that many equal parts.\n" +
                 " Press the button below to show.");
         Button nButton = new Button("1/n");
-        Label tooBig = new Label("");
+        nButton.setStyle("-fx-font: 20 arial;");
+        Text tooBig = new Text("");
+        nInfo.setStyle("-fx-font: 20 arial;");
+        tooBig.setStyle("-fx-font: 20 arial;");
 
         nSize.getChildren().addAll(nInfo, nField, nButton, tooBig);
         nSize.setSpacing(10.0);
