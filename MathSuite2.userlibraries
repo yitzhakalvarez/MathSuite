@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Maven: com.google.protobuf:protobuf-java:3.6.1">
+    <archive path="C:/Users/Jacob/.m2/repository/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar" />
+  </library>
+  <library name="Maven: com.jfoenix:jfoenix:9.0.8">
+    <archive path="C:/Users/Jacob/.m2/repository/com/jfoenix/jfoenix/9.0.8/jfoenix-9.0.8.jar" />
+  </library>
+  <library name="Maven: mysql:mysql-connector-java:8.0.19">
+    <archive path="C:/Users/Jacob/.m2/repository/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar" />
+  </library>
+  <library name="Maven: org.ini4j:ini4j:0.5.4">
+    <archive path="C:/Users/Jacob/.m2/repository/org/ini4j/ini4j/0.5.4/ini4j-0.5.4.jar" />
+  </library>
+</eclipse-userlibraries>
+
