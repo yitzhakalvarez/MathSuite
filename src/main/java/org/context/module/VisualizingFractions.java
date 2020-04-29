@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -13,8 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import org.context.SessionContext;
-import org.ui.user.ModuleController;
+import javafx.stage.Screen;
 
 /**
  * Author: Alec Lehmphul
@@ -26,22 +26,20 @@ public class VisualizingFractions extends Module {
 
     @Override
     public Parent setup() {
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds(); // Gets screen bounds
 
-        GridPane pane = new GridPane();
+        StackPane pane = new StackPane();  // Base pane
         PieChart chart = new PieChart();
-        VBox vbox = new VBox();  // Will hold info on n size
+        VBox nSize = new VBox();  // Will hold info on n size
+        VBox vbox = new VBox();  // Will hol all the charts and buttons
 
         //  Creates buttons and adds them to grid
+        HBox buttons = new HBox();
         Button half = new Button("Halves");
-        pane.add(half, 1, 1);
 
         Button third = new Button("Thirds");
-        pane.add(third, 1, 2);
-        pane.setPadding(new Insets(10, 10, 10, 10));
 
         Button forth = new Button("Forths");
-        pane.add(forth, 1, 3);
-
 
         // gives the 1st button an event handler
         // shows the circle split into halves
@@ -54,7 +52,6 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Two-Halves");
-                pane.add(chart, 2, 2);
             }
         });
 
@@ -71,7 +68,6 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Three-Thirds");
-                pane.add(chart, 2, 2);
             }
         });
 
@@ -88,20 +84,21 @@ public class VisualizingFractions extends Module {
                                 new PieChart.Data("", 1));
                 chart.setData(pieChartData);
                 chart.setTitle("Four-Forths");
-                pane.add(chart, 2, 2);
             }
         });
 
         // sets gaps both horizontally and vertically
-        pane.setHgap(10);
-        pane.setVgap(12);
+        buttons.setSpacing(20);
+        vbox.setSpacing(primaryScreenBounds.getMaxY()/25);
+        nSize.setSpacing(25);
+        nSize.setPadding(new Insets(20, 0, 0, 0));
 
         // creates the chart for the full circle (1/1)
         ObservableList<PieChart.Data> fullCircle =
                 FXCollections.observableArrayList(new PieChart.Data("", 1));
         chart.setData(fullCircle);
         chart.setTitle("Full Circle");
-        pane.add(chart, 2, 2);
+        vbox.getChildren().add(chart);
 
 
         //  creates text field and button
@@ -109,23 +106,23 @@ public class VisualizingFractions extends Module {
         //  of equal parts
         TextField nField = new TextField();
         nField.setText("1");
+        nField.setMaxWidth(primaryScreenBounds.getMaxX()/4.0);
         Label nInfo = new Label("Enter a number and the circle\n" +
                 " will be split into that many equal parts.\n" +
                 " Press the button below to show.");
         Button nButton = new Button("1/n");
         Label tooBig = new Label("");
 
-        vbox.getChildren().addAll(nInfo, nField, nButton, tooBig);
-        vbox.setSpacing(10.0);
-        pane.add(vbox, 2, 6);
+        nSize.getChildren().addAll(nInfo, nField, nButton, tooBig);
+        nSize.setSpacing(10.0);
 
         nButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("", 1));
                 int n = Integer.parseInt(nField.getText());
-                if (n > 200)
-                    tooBig.setText("Please enter a smaller number.");
+                if (n >= 100)
+                    tooBig.setText("Please enter a number smaller than 100.");
                 else if (n == 0)
                     tooBig.setText("Please enter a number greater than 0.");
                 else if (n < 0)
@@ -139,14 +136,21 @@ public class VisualizingFractions extends Module {
                         chart.setTitle("Full Circle");
                     else
                         chart.setTitle("One Circle Divided into " + nField.getText() + " Equal Parts");
-                    pane.add(chart, 2, 2);
                 }
             }
         });
+        buttons.getChildren().addAll(half, third, forth);
+        vbox.getChildren().addAll(buttons, nSize);
+        pane.getChildren().add(vbox);
 
         pane.setAlignment(Pos.CENTER);
+        nSize.setAlignment(Pos.CENTER);
+        buttons.setAlignment(Pos.CENTER);
+        vbox.setAlignment(Pos.CENTER);
 
         pane.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        pane.setPrefSize(primaryScreenBounds.getMaxX(), primaryScreenBounds.getMaxY());
 
         //parent = pane;
         return pane;

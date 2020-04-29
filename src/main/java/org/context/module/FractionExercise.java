@@ -82,6 +82,8 @@ public class FractionExercise extends Module {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Pane parent = FXMLLoader.load(getClass().getResource("/fxml/FractionExercise.fxml"));
         parent.setPadding(new Insets(primaryScreenBounds.getMaxY()/2.0 - 395/2.0, primaryScreenBounds.getMaxX()/2.0 - 565/2.0, primaryScreenBounds.getMaxY()/2.0 - 395/2.0, primaryScreenBounds.getMaxX()/2.0 - 565/2.0));
+        parent.setScaleX(1.75);
+        parent.setScaleY(1.75);
         return parent;
     }
 
