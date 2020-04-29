@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import org.context.SessionContext;
 import org.ui.SceneManager;
 
+
 public final class App extends Application {
 
     public static void main(String[] args) {
