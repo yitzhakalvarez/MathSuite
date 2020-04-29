@@ -87,7 +87,7 @@ public class FractionExercise extends Module {
         return parent;
     }
 
-    public void checkAnswers(ActionEvent actionEvent) {
+    public void checkAnswers() {
         //  if question 1 is correct
         if (q1Num.getText().equals("2") && q1Denom.getText().equals("3")) {
             if (count1 == 0) {
