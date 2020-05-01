@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="395.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.context.module.FractionExercise">
+<StackPane prefHeight="395.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.context.module.VolumesOfCubesExercise">
    <children>
       <VBox>
          <children>
@@ -68,8 +68,8 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <TextField fx:id="cube1" prefHeight="27.0" prefWidth="68.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb2" layoutX="129.0" layoutY="133.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
@@ -83,8 +83,8 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot1" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <TextField fx:id="cube2" prefHeight="27.0" prefWidth="68.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb3" layoutX="129.0" layoutY="197.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
@@ -93,13 +93,13 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/cube4.png" />
+                                    <Image url="@../images/cube3.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </VBox>
-                        <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot2" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <TextField fx:id="cube3" prefHeight="27.0" prefWidth="68.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb4" layoutX="129.0" layoutY="261.0" prefHeight="57.0" prefWidth="340.0" spacing="5.0">
@@ -108,7 +108,7 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/cube3.png" />
+                                    <Image url="@../images/cube4.png" />
                                  </image>
                                  <VBox.margin>
                                     <Insets />
@@ -116,8 +116,8 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot3" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <TextField fx:id="cube4" prefHeight="27.0" prefWidth="68.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb5" layoutX="129.0" layoutY="320.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
@@ -131,11 +131,11 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot4" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <TextField fx:id="cube5" prefHeight="27.0" prefWidth="68.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
-                  <Button fx:id="button" layoutX="469.0" layoutY="341.0" mnemonicParsing="false" onAction="#checkAnswers" prefHeight="54.0" prefWidth="114.0" text="Check Answers" textAlignment="CENTER" />
+                  <Button fx:id="button" layoutX="463.0" layoutY="327.0" mnemonicParsing="false" onAction="#check" prefHeight="54.0" prefWidth="114.0" text="Check Answers" textAlignment="CENTER" />
                </children>
             </Pane>
          </children>
