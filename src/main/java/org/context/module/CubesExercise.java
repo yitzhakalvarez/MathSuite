@@ -18,7 +18,7 @@ import java.io.IOException;
  * Author: Yitzhak Alvarez
  */
 
-public class VolumesOfCubesExercise extends Module {
+public class CubesExercise extends Module {
 
     private Text correct1, correct2, correct3, correct4, correct5;
     int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
