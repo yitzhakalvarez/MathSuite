@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -29,19 +28,31 @@ public class VolumesOfCubesExercise extends Module {
     private HBox Hb1;
 
     @FXML
-    private TextField cuberoot;
+    private Text cuberoot;
 
     @FXML
     private HBox Hb2;
 
     @FXML
+    private Text cuberoot1;
+
+    @FXML
     private HBox Hb3;
+
+    @FXML
+    private Text cuberoot2;
 
     @FXML
     private HBox Hb4;
 
     @FXML
+    private Text cuberoot3;
+
+    @FXML
     private HBox Hb5;
+
+    @FXML
+    private Text cuberoot4;
 
     @FXML
     private Button button;

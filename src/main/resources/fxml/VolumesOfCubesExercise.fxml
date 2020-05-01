@@ -84,7 +84,7 @@
                            </children>
                         </VBox>
                         <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <Text fx:id="cuberoot1" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb3" layoutX="129.0" layoutY="197.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
@@ -99,7 +99,7 @@
                            </children>
                         </VBox>
                         <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <Text fx:id="cuberoot2" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb4" layoutX="129.0" layoutY="261.0" prefHeight="57.0" prefWidth="340.0" spacing="5.0">
@@ -117,7 +117,7 @@
                            </children>
                         </VBox>
                         <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <Text fx:id="cuberoot3" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <HBox id="h1" fx:id="Hb5" layoutX="129.0" layoutY="320.0" prefHeight="54.0" prefWidth="340.0" spacing="5.0">
@@ -132,7 +132,7 @@
                            </children>
                         </VBox>
                         <TextField prefHeight="27.0" prefWidth="68.0" />
-                        <Text fx:id="cuberoot" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
+                        <Text fx:id="cuberoot4" strokeType="OUTSIDE" strokeWidth="0.0" text="cm^3" textAlignment="CENTER" wrappingWidth="48.22900390625" />
                      </children>
                   </HBox>
                   <Button fx:id="button" layoutX="469.0" layoutY="341.0" mnemonicParsing="false" onAction="#checkAnswers" prefHeight="54.0" prefWidth="114.0" text="Check Answers" textAlignment="CENTER" />
