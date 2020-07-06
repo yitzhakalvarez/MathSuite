@@ -12,4 +12,4 @@ This repository documents our project done for **CPS353**.
     
 2. **Class Start Date:** Jan 21, 2020
 
-3. **Class End Date:** May 4, 2019
+3. **Class End Date:** May 4, 2020
